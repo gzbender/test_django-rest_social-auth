@@ -3,7 +3,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from rest_framework.urlpatterns import format_suffix_patterns
 
-from project.views import Index, UserList, UserDetail, CurrentUserDetail
+from project.views import logout, Index, UserList, UserDetail, CurrentUserDetail
 
 admin.autodiscover()
 
@@ -21,6 +21,7 @@ urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'api'])
 # Default login/logout views
 urlpatterns += patterns('',
     url(r'^$', Index.as_view(), name='index'),
+    url(r'^logout/$', logout, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

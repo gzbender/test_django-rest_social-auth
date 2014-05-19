@@ -1,11 +1,14 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    {% if request.user.is_authenticated %}
-        <h1>{{ request.user.username }}</h1>
+    {% if user.is_authenticated %}
+        <div>
+            Вы&nbsp;вошли&nbsp;как<br/>
+            <span style="font-size: 24px;">{{ user.first_name }}&nbsp;{{ user.last_name }}</span><br/>
+            <a href="{% url 'logout' %}">Выйти</a>
+        </div>
     {% else %}
         <a href="{% url 'social:begin' "vk-oauth2" %}" class="vk sn-logo">Authorize by vk</a><br />
         <a href="{% url 'social:begin' "facebook" %}" class="fb sn-logo">Authorize by facebook</a>
     {% endif %}
-        {% url 'social:complete' "vk-oauth2" %}
 {% endblock content %}

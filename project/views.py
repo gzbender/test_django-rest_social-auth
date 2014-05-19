@@ -4,11 +4,18 @@ __author__ = 'gzbender'
 from rest_framework import generics
 from rest_framework.permissions import IsAdminUser
 from django.views.generic import View
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.views import logout as auth_logout
 
 from project.serializers import UserSerializer
 from project.models import User
-import social.apps.django_app.urls
+
+
+def logout(request):
+    """Logs out user"""
+    auth_logout(request)
+    return redirect('/')
+
 
 class Index(View):
     template_name = 'index.html'
@@ -33,7 +40,6 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 class CurrentUserDetail(generics.RetrieveUpdateAPIView):
     model = User
     serializer_class = UserSerializer
-    permission_classes = (IsAdminUser,)
 
     def get_object(self):
         return self.request.user

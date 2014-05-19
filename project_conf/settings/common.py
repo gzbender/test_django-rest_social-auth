@@ -90,13 +90,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'project.User'
-LOGIN_REDIRECT_URL = 'socia/complete/'
+LOGIN_REDIRECT_URL = '/'
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.OAuth2Authentication',
-    ),
 }
 
 AUTHENTICATION_BACKENDS = (
@@ -109,4 +106,3 @@ TEMPLATE_CONTEXT_PROCESSORS += (
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
 )
-
