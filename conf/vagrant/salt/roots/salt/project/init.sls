@@ -20,7 +20,6 @@
       - django-filter
       - python-social-auth
       - djangorestframework
-      - django-oauth2-provider
     - require:
       - virtualenv: {{ app_name }}.venv
 
