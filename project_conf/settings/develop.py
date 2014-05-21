@@ -3,6 +3,7 @@ __author__ = 'gzbender'
 
 from common import *
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

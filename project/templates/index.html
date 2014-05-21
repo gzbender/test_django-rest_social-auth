@@ -5,6 +5,8 @@
         <div>
             Вы&nbsp;вошли&nbsp;как<br/>
             <span style="font-size: 24px;">{{ user.first_name }}&nbsp;{{ user.last_name }}</span><br/>
+            {% if user.age > 0 %}возраст:&nbsp;{{ user.age }}<br/>{% endif %}
+            {% if user.gender %}пол:&nbsp;{{ user.get_gender_display }}<br/>{% endif %}
             <a href="{% url 'logout' %}">Выйти</a>
         </div>
     {% else %}

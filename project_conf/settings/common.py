@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from django.conf.global_settings import *
+from social.pipeline import DEFAULT_AUTH_PIPELINE
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -105,4 +106,12 @@ AUTHENTICATION_BACKENDS = (
 TEMPLATE_CONTEXT_PROCESSORS += (
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
+)
+
+SOCIAL_AUTH_VK_OAUTH2_EXTRA_DATA = ['sex', 'bdate']
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = ['birthday', 'gender']
+
+SOCIAL_AUTH_PIPELINE = DEFAULT_AUTH_PIPELINE
+SOCIAL_AUTH_PIPELINE += (
+    'project.social_pipeline.user_details',
 )

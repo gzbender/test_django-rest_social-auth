@@ -17,6 +17,7 @@
       - MySQL-python
       - Django
       - South
+      - python-dateutil
       - django-filter
       - python-social-auth
       - djangorestframework
